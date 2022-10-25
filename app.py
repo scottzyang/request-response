@@ -21,5 +21,11 @@ def desserts(users_dessert):
     '''display a message to user that changes based on favorite dessert'''
     return f'How did you know that I liked {users_dessert} too?'
 
+@app.route('/madlibs/<adjective>/<noun>')
+def madlib(adjective, noun):
+    '''displays funny story using adjective and noun'''
+    return f'That is a really {adjective} {noun}'
+
+
 if __name__ == '__main__':
     app.run(debug=True)
