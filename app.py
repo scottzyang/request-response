@@ -26,6 +26,13 @@ def madlib(adjective, noun):
     '''displays funny story using adjective and noun'''
     return f'That is a really {adjective} {noun}'
 
+@app.route('/multiply/<number1>/<number2>')
+def multiply(number1, number2):
+    '''multiplies the two numbers provided and displays results'''
+    if number1.isnumeric() and number2.isnumeric(): 
+        return f'{number1} times {number2} is {int(number1) * int(number2)}'
+    else:
+        return f'Invalid inputs. Please try again by entering 2 numbers!'
 
 if __name__ == '__main__':
     app.run(debug=True)
