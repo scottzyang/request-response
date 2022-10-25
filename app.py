@@ -2,6 +2,7 @@
 # (And make sure to delete this TODO message when you're done!) 
 
 # import the Flask library
+import random
 from flask import Flask
 # set app variable to start writing routes
 app = Flask(__name__)
@@ -9,7 +10,7 @@ app = Flask(__name__)
 @app.route('/')
 def homepage():
     '''Shows a greeting to the user'''
-    return '<h1>Are you there, world? It\'s me, Ducky</h1>'
+    return 'Are you there, world? It\'s me, Ducky!'
 
 @app.route('/animal/<users_animal>')
 def favorite_animal(users_animal):
@@ -46,6 +47,14 @@ def sayntimes(word, n):
         return f'<h1>{statement}</h1>'
     else:
         return f'<h1>Invalid input. Please try again by entering a word and a number!</h1>'
+
+@app.route('/dicegame')
+def dicegame():
+    random_num = random.randint(1,6)
+    if random_num == 6:
+        return f'<h1>You rolled a {random_num}! You win!</h1>'
+    
+    return f'<h1>You rolled a {random_num}! You lost!</h1>'
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
