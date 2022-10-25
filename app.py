@@ -50,11 +50,28 @@ def sayntimes(word, n):
 
 @app.route('/dicegame')
 def dicegame():
+    ''' determines winner based on random rolls'''
     random_num = random.randint(1,6)
-    if random_num == 6:
-        return f'<h1>You rolled a {random_num}! You win!</h1>'
+    computer_num = random.randint(1,6)
     
-    return f'<h1>You rolled a {random_num}! You lost!</h1>'
+    # you win
+    if random_num > computer_num:
+        return f'''<h2>You rolled: {random_num}</h2>
+                   <br>
+                   <h2>Computer rolled: {computer_num}</h2>
+                   <br>
+                   <h2>You win!</h2>
+                '''
+    # computer wins
+    elif computer_num > random_num:
+        return f'''<h2>You rolled: {random_num}</h2>
+                   <br>
+                   <h2>Computer rolled: {computer_num}</h2>
+                   <br>
+                   <h2>You lose!</h2>
+                '''
+    # tie
+    return f'<h2>You both rolled {random_num}. It\'s a tie! Try again!</h2>'
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
