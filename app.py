@@ -34,5 +34,15 @@ def multiply(number1, number2):
     else:
         return f'Invalid inputs. Please try again by entering 2 numbers!'
 
+@app.route('/sayntimes/<word>/<n>')
+def sayntimes(word, n):
+    '''repeats word a number of times'''
+    statement = ''
+    number = int(n)
+    while number > 0:
+        statement += f'{word} '
+        number -= 1
+    return f'<h1>{statement}</h1>'
+
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
