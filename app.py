@@ -38,11 +38,14 @@ def multiply(number1, number2):
 def sayntimes(word, n):
     '''repeats word a number of times'''
     statement = ''
-    number = int(n)
-    while number > 0:
-        statement += f'{word} '
-        number -= 1
-    return f'<h1>{statement}</h1>'
+    if n.isdigit():
+        number = int(n)
+        while number > 0:
+            statement += f'{word} '
+            number -= 1
+        return f'<h1>{statement}</h1>'
+    else:
+        return f'<h1>Invalid input. Please try again by entering a word and a number!</h1>'
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
